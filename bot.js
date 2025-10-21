@@ -99,7 +99,7 @@ async function checkScores() {
       }
       if (
         scoreFound &&
-        score >= 10000 &&
+        score >= 30000 &&
         (matchFound || matchFound2 || matchFound3)
       ) {
         
