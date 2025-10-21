@@ -97,7 +97,6 @@ async function checkScores() {
           );
         }
       }
-console.log(matchFound,matchFound2,matchFound3,score)
       if (
         scoreFound &&
         score >= 10000 &&
