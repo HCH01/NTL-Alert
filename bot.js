@@ -26,7 +26,7 @@ client.once('ready', () => {
     if (!isPaused) {
       checkScores();
     }
-  }, 900000); //15min
+  }, 1200000); //20min
 });
 
 async function checkScores() {
