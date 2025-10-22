@@ -51,6 +51,7 @@ async function checkScores() {
       'ind',
       'lwk',
       '[nm]',
+      'nm ',
       'hyena',
     ];
 
