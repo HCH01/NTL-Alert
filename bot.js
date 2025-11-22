@@ -22,8 +22,9 @@ let isPaused = false;
 client.once('ready', () => {
   console.log('Bot is online!');
   checkScores();
-  setInterval(() => {
-    axios.get('https://ntl-alert.onrender.com/').then((res) => console.log('keeping server alive -> ',res.data))
+  setInterval( async () => {
+    let res = await axios.get('https://ntl-alert.onrender.com/');
+    console.log('keeping server alive ',res.data);
     if (!isPaused) {
       checkScores();
     }
