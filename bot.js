@@ -32,8 +32,9 @@ client.once('ready', () => {
 async function checkScores() {
   try {
     const { data } = await axios.get('https://ntl-slither.com/ss/');
+    axios.get('https://ntl-alert.onrender.com/').then((res) => console.log('keeping server alive -> ',res.data))
     const $ = cheerio.load(data);
-
+    
     let serverFound = false;
     let scoreFound = false;
 
