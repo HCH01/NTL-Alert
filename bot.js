@@ -22,6 +22,7 @@ let isPaused = false;
 client.once('ready', () => {
   console.log('Bot is online!');
   checkScores();
+  axios.get('https://ntl-alert.onrender.com/').then((res) => console.log('keeping server alive -> ',res.data))
   setInterval(() => {
     if (!isPaused) {
       checkScores();
@@ -32,7 +33,6 @@ client.once('ready', () => {
 async function checkScores() {
   try {
     const { data } = await axios.get('https://ntl-slither.com/ss/');
-    axios.get('https://ntl-alert.onrender.com/').then((res) => console.log('keeping server alive -> ',res.data))
     const $ = cheerio.load(data);
     
     let serverFound = false;
