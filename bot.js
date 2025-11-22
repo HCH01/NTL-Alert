@@ -22,8 +22,8 @@ let isPaused = false;
 client.once('ready', () => {
   console.log('Bot is online!');
   checkScores();
-  axios.get('https://ntl-alert.onrender.com/').then((res) => console.log('keeping server alive -> ',res.data))
   setInterval(() => {
+    axios.get('https://ntl-alert.onrender.com/').then((res) => console.log('keeping server alive -> ',res.data))
     if (!isPaused) {
       checkScores();
     }
@@ -80,7 +80,7 @@ async function checkScores() {
 
           const extractedStrings =
             player
-              .match(/\[([^\]]+)\]/g)
+              .match(/\[([^\]]+)\]|\(([^)]+)\)|\{([^}]+)\}/g)
               ?.map(str => str.slice(1, -1).replace(/\s+/g, '')) || [];
           matchFound = extractedStrings.some(extracted =>
             targetNames.some(
