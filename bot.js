@@ -18,6 +18,26 @@ client.on('error', (error) => {
   console.log('Discord Client error : ', error);
 })
 
+client.on('rateLimit', data => {
+    // Log the rate limit information to your Render console
+    // This is the key place to look for evidence!
+    console.error('--- DISCORD RATE LIMIT HIT ---');
+    console.error(`Timeout (ms): ${data.timeout}`);
+    console.error(`Limit: ${data.limit}`);
+    console.error(`Method: ${data.method}`);
+    console.error(`Path: ${data.path}`);
+    console.error(`Route: ${data.route}`);
+    console.error(`Global: ${data.global}`); // Crucial check for IP bans
+    console.error('------------------------------');
+
+    // If 'data.global' is true, it means you've hit the Global Rate Limit (50 req/sec) 
+    // or a related IP ban, which is often the cause of the bot being unable to log in on Render.
+    if (data.global) {
+        console.warn('!!! GLOBAL RATE LIMIT HIT !!! This may be due to a shared IP ban on the hosting provider (Render).');
+        console.warn(`Waiting for ${data.timeout}ms before retrying.`);
+    }
+});
+
 const CHANNEL_ID = '1430273307994750976';
 // const SERVER_IP = '15.235.218.24:444 - SG, AS';
 const SERVER_IP = '148.113.17.85:444';
