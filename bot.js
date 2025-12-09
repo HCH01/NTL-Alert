@@ -21,20 +21,20 @@ client.on('error', (error) => {
 client.on('rateLimit', data => {
     // Log the rate limit information to your Render console
     // This is the key place to look for evidence!
-    console.error('--- DISCORD RATE LIMIT HIT ---');
-    console.error(`Timeout (ms): ${data.timeout}`);
-    console.error(`Limit: ${data.limit}`);
-    console.error(`Method: ${data.method}`);
-    console.error(`Path: ${data.path}`);
-    console.error(`Route: ${data.route}`);
-    console.error(`Global: ${data.global}`); // Crucial check for IP bans
-    console.error('------------------------------');
+    console.log('--- DISCORD RATE LIMIT HIT ---');
+    console.log(`Timeout (ms): ${data.timeout}`);
+    console.log(`Limit: ${data.limit}`);
+    console.log(`Method: ${data.method}`);
+    console.log(`Path: ${data.path}`);
+    console.log(`Route: ${data.route}`);
+    console.log(`Global: ${data.global}`); // Crucial check for IP bans
+    console.log('------------------------------');
 
     // If 'data.global' is true, it means you've hit the Global Rate Limit (50 req/sec) 
     // or a related IP ban, which is often the cause of the bot being unable to log in on Render.
     if (data.global) {
-        console.warn('!!! GLOBAL RATE LIMIT HIT !!! This may be due to a shared IP ban on the hosting provider (Render).');
-        console.warn(`Waiting for ${data.timeout}ms before retrying.`);
+        console.log('!!! GLOBAL RATE LIMIT HIT !!! This may be due to a shared IP ban on the hosting provider (Render).');
+        console.log(`Waiting for ${data.timeout}ms before retrying.`);
     }
 });
 
