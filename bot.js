@@ -23,7 +23,7 @@ const CHANNEL_ID = '1430273307994750976';
 const SERVER_IP = '148.113.17.85:444';
 let isPaused = false;
 
-client.once('ready', () => {
+client.once('clientReady', () => {
   console.log('Bot is online!');
   checkScores();
   setInterval( async () => {
