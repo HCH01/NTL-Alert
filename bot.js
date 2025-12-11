@@ -38,7 +38,7 @@ client.on('rateLimit', data => {
     }
 });
 
-const CHANNEL_ID = '1430273307994750976';
+const CHANNEL_ID = '1448290635147903107';
 // const SERVER_IP = '15.235.218.24:444 - SG, AS';
 const SERVER_IP = '148.113.17.85:444';
 let isPaused = false;
