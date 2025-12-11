@@ -2,7 +2,7 @@
 import http from 'http';
 
 const server = http.createServer((req, res) => {
-  res.write('I am alive');
+  res.write('SMT Team is the best ');
   res.end();
 });
 

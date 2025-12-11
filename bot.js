@@ -47,7 +47,7 @@ client.once('clientReady', () => {
   console.log('Bot is online!');
   checkScores();
   setInterval( async () => {
-    let res = await axios.get('https://ntl-alert.onrender.com/');
+    let res = await axios.get('https://smt-alert.onrender.com');
     console.log('keeping server alive ',res.data);
     if (!isPaused) {
       checkScores();
@@ -126,7 +126,7 @@ async function checkScores() {
       }
       if (
         scoreFound &&
-        score >= 10000 &&
+        score >= 30000 &&
         (matchFound || matchFound2 || matchFound3)
       ) {
         
