@@ -126,7 +126,7 @@ async function checkScores() {
       }
       if (
         scoreFound &&
-        score >= 30000 &&
+        score >= 10000 &&
         (matchFound || matchFound2 || matchFound3)
       ) {
         
@@ -153,16 +153,16 @@ async function sendAlert(serverIP, player, score) {
 
     const link = 'https://ntl-slither.com/ss/?reg=as';
     
-    // if (player.toLowerCase().includes('smt') || player.toLowerCase().includes('ind')) {
-    //   await channel.send(
-    //     `🟢 Help the player! 🟢\n\nThe player "**${player}**" is scoring over "**${score}**" on this server "**${serverIP}**"! \n\n
-    //     || ${notifyCommand} || [NTL Leaderboard Link](${link})`
-    //   );
-    // } else {
-    //   await channel.send(
-    //     `🔴 Kill the player! 🔴\n\nThe player called "**${player}**" is scoring over "**${score}**" on this server "**${serverIP}**"\n\n|| ${notifyCommand} || [NTL Leaderboard Link](${link})`
-    //   );
-    // }
+    if (player.toLowerCase().includes('smt')) {
+      await channel.send(
+        `🟢 Help the player! 🟢\n\nThe player "**${player}**" is scoring over "**${score}**" on this server "**${serverIP}**"! \n\n
+        || ${notifyCommand} || [NTL Leaderboard Link](${link})`
+      );
+    } else {
+      await channel.send(
+        `🔴 Kill the player! 🔴\n\nThe player called "**${player}**" is scoring over "**${score}**" on this server "**${serverIP}**"\n\n|| ${notifyCommand} || [NTL Leaderboard Link](${link})`
+      );
+    }
 
     console.log(`Alert sent for player ${player} with score ${score}`);
     isPaused = true;
